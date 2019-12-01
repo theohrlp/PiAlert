@@ -13,4 +13,4 @@ tm = s.recv(1024) # msg can only be 1024 bytes long
 
 s.close()
 
-print("Status %s" % tm.decode('ascii'))
+print("Status: %s" % tm.decode('ascii'))
