@@ -4,13 +4,19 @@ import socket               # Import socket module
 
 # creates socket object
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
+flag = True
 port = 5456
 
-s.connect(("192.168.1.25", port))
+try:
+    s.connect(("192.168.1.25", port))
+    tm = s.recv(1024) # msg can only be 1024 bytes long
+    s.close()
+    print("Status: %s" % tm.decode('ascii'))
+except:
+    pass
+    flag = False
 
-tm = s.recv(1024) # msg can only be 1024 bytes long
-
-s.close()
-
-print("Status: %s" % tm.decode('ascii'))
+if(not flag):
+    {
+        print("Server is out")
+    }
