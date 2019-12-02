@@ -1,5 +1,3 @@
-#!/usr/bin/python3          # This is client.py file
-
 import socket               # Import socket module
 import time
 import os
@@ -17,19 +15,14 @@ EMAIL_PASSWORD = os.environ.get('EMAIL_PASS')
 
 def notifyUser():
     print("Hello")
-    server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-    server.login("theotriton@gmail.com", "eimaimiarozarkoudapouxorebei12")
-    server.sendmail("theotriton@gmail.com", "theotriton@gmail.com", "this message is from python")
-    server.quit()
-    # with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
-        # smtp.ehlo()
-        # smtp.starttls()
-        # smtp.ehlo()
-    # smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
-    # subject = 'YOUR SITE IS DOWN!'
-    # body = 'Make sure the server restarted and it is back up'
-    # msg = f'Subject: {subject}\n\n{body}'
+    subject = 'YOUR SITE IS DOWN!'
+    body = 'Make sure the server restarted and it is back up'
+    msg = f'Subject: {subject}\n\n{body}'
     # temp = msg.as_string()
+    server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+    server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+    server.sendmail(EMAIL_ADDRESS, EMAIL_ADDRESS, msg)
+    server.quit()
     # smtp.sendmail(EMAIL_ADDRESS, 'EMAIL_ADDRESS', temp)
     print("Hello")
 
@@ -49,6 +42,3 @@ while(flag):
         pass
         
 notifyUser()
-
-
-
