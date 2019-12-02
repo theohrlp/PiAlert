@@ -14,7 +14,6 @@ EMAIL_ADDRESS = os.environ.get('EMAIL_USER')
 EMAIL_PASSWORD = os.environ.get('EMAIL_PASS')
 
 def notifyUser():
-    print("Hello")
     subject = 'YOUR SITE IS DOWN!'
     body = 'Make sure the server restarted and it is back up'
     msg = f'Subject: {subject}\n\n{body}'
@@ -24,7 +23,6 @@ def notifyUser():
     server.sendmail(EMAIL_ADDRESS, EMAIL_ADDRESS, msg)
     server.quit()
     # smtp.sendmail(EMAIL_ADDRESS, 'EMAIL_ADDRESS', temp)
-    print("Hello")
 
 while(flag):
     # time.sleep(1)
@@ -34,8 +32,8 @@ while(flag):
         time.sleep(1)
         tm = s.recv(1024) # msg can only be 1024 bytes long
         s.close()
-        time.sleep(1)
-        print("Status: %s" % tm.decode('ascii'))
+        time.sleep(300)
+        # print("Status: %s" % tm.decode('ascii'))
     except Exception as e:
         print(e)
         flag = False
