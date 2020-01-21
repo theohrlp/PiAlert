@@ -6,6 +6,8 @@ import smtplib
 # creates socket object
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
+s.settimeout(5)
+
 flag = True
 
 port = 5456
